@@ -1,0 +1,14 @@
+[
+  {
+    "name": "name 1",
+    "version": "1.0.0",
+    "description": "education",
+    "main": "index.js"
+  },
+  {
+    "name": "name 2",
+    "version": "1.0.0",
+    "description": "education",
+    "main": "index.js"
+  }
+]
