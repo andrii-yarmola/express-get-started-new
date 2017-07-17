@@ -1,12 +1,12 @@
 [
   {
-    "name": "name 1",
+    "name": "arnold",
     "version": "1.0.0",
     "description": "education",
     "main": "index.js"
   },
   {
-    "name": "name 2",
+    "name": "jake",
     "version": "1.0.0",
     "description": "education",
     "main": "index.js"
