@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>User Index</title>
+<body>
+
+  <h1>this is {{username}}'s profile</h1>
+  <p> {{username}}'s is {{age}} years old </p>
+  <button onClick="inc()"> + </button>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script>
+    function inc() {
+      $.ajax('/user/{{username}}', {
+        method: 'PUT',
+        data: {
+          action: 'inc'
+        },
+        complete: function() {
+          // location.reload();
+        }
+      })
+    }
+  </script>
+
+</body>
+</html>

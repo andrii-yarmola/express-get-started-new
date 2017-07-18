@@ -1,14 +1,23 @@
 [
   {
     "name": "arnold",
-    "version": "1.0.0",
+    "age": "18",
     "description": "education",
-    "main": "index.js"
+    "main": "index.js",
+    "image": "1"
   },
   {
     "name": "jake",
-    "version": "1.0.0",
+    "age": "23",
     "description": "education",
-    "main": "index.js"
+    "main": "index.js",
+    "image": "1"
+  },
+  {
+    "name": "mike",
+    "age": "33",
+    "description": "education",
+    "main": "index.js",
+    "image": "1"
   }
 ]

@@ -9,7 +9,8 @@
   <ul>
     {{#each users as |user|}}
     <li>
-      <a href="/{{user.name}}">{{user.name}}</a>
+      <a href="/user/{{user.name}}">{{user.name}}</a>
+      <img src="/profilepics/{{user.image}}.jpg" alt="image">
     {{/each}}
   </ul>
 </body>

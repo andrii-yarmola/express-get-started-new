@@ -2,8 +2,22 @@ import express from 'express';
 import bodyParser from 'body-parser';
 import fs from 'fs';
 import _ from 'lodash';
+import engines from 'consolidate';
+import path from 'path';
 
 let users = [];
+
+const getUser = ( username ) => {
+  let newUser;
+  JSON.parse(fs.readFileSync('users.json', {encoding: 'utf8'})).forEach(
+    (user) => {
+      if ( username.toLowerCase() == user.name.toLowerCase() ) {
+        newUser = user;
+      };
+    }
+  )
+  return newUser;
+}
 
 fs.readFile('users.json', {encoding: 'utf8'}, (err, data) => {
   if (err) throw err;
@@ -18,19 +32,32 @@ fs.readFile('users.json', {encoding: 'utf8'}, (err, data) => {
 
 let app = express();
 
-app.set('views', './views');
-app.set('view engine', 'jade');
+app.engine('hbs', engines.handlebars);
 
-app.use(bodyParser.json());
+app.set('views', './views');
+app.set('view engine', 'hbs');
+
+app.use('/profilepics', express.static('images'));
+
+// app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
 
 app.get('/', (req, res) => {
-  // res.send(JSON.stringify(users, null, 2));
-  res.render('index', {users: users})
+  res.render('index', { users });
 });
 
-app.get('/:username', (req, res) => {
+app.get('/user/:username', (req, res) => {
   const username = req.params.username;
-  res.send(username);
-}); 
+  const user = getUser(username);
+  res.render('user', { username, age: user.age })
+});
 
-app.listen(3000, () => console.log('Running on localhost:3000'));
+app.put('/user/:username', (req, res) => {
+  const username = req.params.username;
+  const user = getUser(username);
+  // save
+  res.end();
+});
+
+
+const server = app.listen(3000, () => console.log('Running on localhost:' + server.address().port ));
